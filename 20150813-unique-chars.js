@@ -28,7 +28,7 @@ var uniqueCharsOneLoop = function (string) {
   var result = 'String contains all unique characters.'
   var newObj = {};
   array.forEach(function(val, i, array){
-    if(newObj.hasOwnProperty(val)){
+    if(newObj[val]){
       result = 'String does not contain all unique characters.'
     }
     newObj[val] = val
@@ -55,5 +55,27 @@ var uniqueChars = function(string) {
   return result;
 }
 
-console.log(uniqueChars(notUnique));
-console.log(uniqueChars(unique));
+// console.log(uniqueChars(notUnique));
+// console.log(uniqueChars(unique));
+
+//Constant time:
+var uniqueCharsConstant = function (string) {
+  if(string.length <= 0){
+    return "String contains all unique characters.";
+  } else {
+    var array = string.split('');
+    var newObj = {};
+    array.forEach(function(val, i, array){
+      if(newObj[val]){
+        return 'String does not contain all unique characters.'
+      }
+    })
+    var newArray = array.slice(i, array.length-1)
+    console.log(newArray.length);
+    var newString = newArray.join()
+    return uniqueCharsConstant(newString)
+  }
+}
+
+//console.log(uniqueCharsConstant(notUnique));
+console.log(uniqueCharsConstant(unique));

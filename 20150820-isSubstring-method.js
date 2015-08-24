@@ -31,7 +31,7 @@ var compressString = function (string) {
       result += letter + accum
       letter = char
       accum = 1;
-    }
+    }a
   })
   result = result.slice(1, result.length-1)
   if (result.length > string.length) {

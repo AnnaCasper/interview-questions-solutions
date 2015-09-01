@@ -16,12 +16,13 @@ var search = function (str) {
 //console.log(search('dre'));
 
 var fuzzy = function (str) {
-  var array = ['Anna', 'Clarkson', 'Andrea', 'Drew', 'Laura'];
+  var array = ['Anna', 'Clarkson', 'Andrea', 'Drew', 'Laura', 'Steven'];
   var newArray = str.split('')
   var results = [];
+  console.log(results);
   for (var i = 0; i < array.length; i++) {
     for (var j = 0; j < newArray.length; j++) {
-    var result = 0;
+      var result = 0;
       if(array[i].toLowerCase().indexOf(newArray[j].toLowerCase()) >= 0){
         result += array[i].toLowerCase().indexOf(newArray[j])
       }
@@ -33,7 +34,28 @@ var fuzzy = function (str) {
   return results;
 }
 
-//console.log(fuzzy('Clerk'));
+console.log(fuzzy(''));
+
+var fuzzyRefactor = function (str) {
+  var array = ['Anna', 'Clarkson', 'Andrea', 'Drew', 'Laura'];
+  var newArray = str.split('')
+  var results = [];
+  array.forEach(function (name) {
+    newArray.forEach(function (char) {
+      var result = 0;
+      if(name.toLowerCase().indexOf(char.toLowerCase()) >= 0){
+        result += name.toLowerCase().indexOf(char)
+      }
+    })
+  })
+  if(result >= 3){
+    results.push(array[i])
+  }
+  return results;
+}
+
+// console.log(fuzzyRefactor('Clerk'));
+
 var result = 0;
 
 var appearing = function (compare, str) {
@@ -46,4 +68,4 @@ var appearing = function (compare, str) {
   }
 }
 
-console.log(appearing('Mississippi', 'iss'));
+// console.log(appearing('Mississippi', 'iss'));

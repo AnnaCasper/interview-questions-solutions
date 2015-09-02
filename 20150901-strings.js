@@ -34,7 +34,7 @@ var fuzzy = function (str) {
   return results;
 }
 
-console.log(fuzzy(''));
+console.log(fuzzy('Stevo'));
 
 var fuzzyRefactor = function (str) {
   var array = ['Anna', 'Clarkson', 'Andrea', 'Drew', 'Laura'];

@@ -5,33 +5,21 @@ var findType = function (array) {
   return array;
 };
 
-var sameLength = function (string, word) {
-  if(word.length === string.length){
-    return true;
-  } 
-}
-
 var wordSort = function (string, word) {
-  if(word.toLowerCase().split('').sort().join('') === string.toLowerCase().split('').sort().join('')){
-    return true;
-  }
-}
+  return (word.toLowerCase().split('').sort().join('') === string.toLowerCase().split('').sort().join(''))
+};
 
-var lowerCase = function (string, word) {
-  if(word.toLowerCase() != string.toLowerCase()){
-    return true;
-  }
-}
+var isMatch = function (string, word) {
+  return (word.length === string.length && word.toLowerCase() != string.toLowerCase() && wordSort(string, word))
+};
 
 var anagram = function (string, array) {
   var result = [];
   findType(array).forEach(function (word) {
-    if(sameLength(string, word) && lowerCase(string, word) && wordSort(string, word)){
-      result.push(word)
-    }
+    if(isMatch(string, word)){ result.push(word) }
   })
   return result;
-}
+};
 
 console.log(anagram("ant", ['tan', 'stand', 'at']));
 console.log(anagram("master", ['stream', 'pigeon', 'maters']));

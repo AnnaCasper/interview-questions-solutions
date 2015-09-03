@@ -1,20 +1,41 @@
-var word = "Orchestra"
-var words = ['cashregister', 'Carthorse', 'radishes']
+var findType = function (array) {
+  if(typeof array == 'string'){
+    array = [array];
+  }
+  return array;
+};
+
+var sameLength = function (string, word) {
+  if(word.length === string.length){
+    return true;
+  } 
+}
+
+var wordSort = function (string, word) {
+  if(word.toLowerCase().split('').sort().join('') === string.toLowerCase().split('').sort().join('')){
+    return true;
+  }
+}
+
+var lowerCase = function (string, word) {
+  if(word.toLowerCase() != string.toLowerCase()){
+    return true;
+  }
+}
 
 var anagram = function (string, array) {
   var result = [];
-  array.forEach(function (word) {
-    if(word.length === string.length){
-      newWord = word.toLowerCase();
-      string = string.toLowerCase();
-      if(newWord != string){
-        if(newWord.split('').sort().join('') === string.split('').sort().join('')){
-          result.push(word)
-        }
-      }
+  findType(array).forEach(function (word) {
+    if(sameLength(string, word) && lowerCase(string, word) && wordSort(string, word)){
+      result.push(word)
     }
   })
   return result;
 }
 
-console.log(anagram(word, words));
+console.log(anagram("ant", ['tan', 'stand', 'at']));
+console.log(anagram("master", ['stream', 'pigeon', 'maters']));
+console.log(anagram("galea", ["eagle"]));
+console.log(anagram("good", ['dog', 'goody']));
+console.log(anagram("Orchestra", ['cashregister', 'Carthorse', 'radishes']));
+console.log(anagram('dog', 'god'));

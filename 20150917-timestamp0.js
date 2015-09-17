@@ -1,4 +1,4 @@
-var moment = require('./bower_components/moment/min/moment.min.js');
+
 
 var timespanA = {
     start: new Date("September, 17, 2015"),

@@ -64,8 +64,7 @@ var scheduleB = [
 var scheduleOverlap = function (a, b) {
   var overlapArray = [];
   for (var i = 0; i < a.length; i++) {
-    for (var j = 0; j < b.length; j++) {
-      console.log(a[i], '----------------', b[j]);
+    for (var j = 0; j < b.length; j++) {  
       if(b[j].start.getTime() > a[i].start.getTime() && b[j].start.getTime() < a[i].end.getTime()){ //if b start is inbetween a start and end - it overlaps
         overlapArray.push(a[i]);
       } else if (a[i].start.getTime() > b[j].start.getTime() && a[i].start.getTime() < b[j].end.getTime()){ //if a start is inbetween b start and end - it overlaps
@@ -79,7 +78,7 @@ var scheduleOverlap = function (a, b) {
       }
     }
   }
-  return '---------------------------------------------'
+  return overlapArray
 }
 
 console.log(scheduleOverlap(scheduleA, scheduleB));
